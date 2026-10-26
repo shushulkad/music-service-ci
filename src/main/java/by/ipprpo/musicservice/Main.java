@@ -10,7 +10,7 @@ import by.ipprpo.musicservice.service.PlaylistService;
 public class Main {
     public static void main(String[] args) {
         System.out.println("==================================================");
-        System.out.println("   Музыкальный сервис (Вариант 11) - Запуск");
+        System.out.println("   Музыкальный сервис (Вариант 11) - Автоматическая сборка");
         System.out.println("==================================================");
 
         PlaylistRepository repository = new InMemoryPlaylistRepository();
