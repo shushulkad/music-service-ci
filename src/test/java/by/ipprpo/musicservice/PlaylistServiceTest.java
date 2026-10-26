@@ -70,4 +70,25 @@ public class PlaylistServiceTest {
         assertTrue(exception.getMessage().contains("уже есть в плейлисте"));
         assertEquals(1, service.getPlaylist(1).getTracks().size());
     }
+
+    @Test
+@DisplayName("Добавление треков с одинаковым названием разных исполнителей")
+void testSameTitleDifferentArtistsAllowed() {
+    User user = new User(10, "Дарья");
+    Playlist playlist = new Playlist(10, "Разные исполнители", user);
+    repository.save(playlist);
+
+    service.addTrackToPlaylist(
+        10, new Track(101, "Hello", "Adele", 295)
+    );
+    service.addTrackToPlaylist(
+        10, new Track(102, "Hello", "Lionel Richie", 251)
+    );
+
+    Playlist saved = service.getPlaylist(10);
+
+    assertEquals(2, saved.getTracks().size());
+    assertEquals("Adele", saved.getTracks().get(0).getArtist());
+    assertEquals("Lionel Richie", saved.getTracks().get(1).getArtist());
+}
 }
