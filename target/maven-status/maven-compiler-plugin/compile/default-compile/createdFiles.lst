@@ -1,0 +1,7 @@
+by\ipprpo\musicservice\model\Track.class
+by\ipprpo\musicservice\model\User.class
+by\ipprpo\musicservice\repository\InMemoryPlaylistRepository.class
+by\ipprpo\musicservice\model\Playlist.class
+by\ipprpo\musicservice\repository\PlaylistRepository.class
+by\ipprpo\musicservice\Main.class
+by\ipprpo\musicservice\service\PlaylistService.class

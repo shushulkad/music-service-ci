@@ -1,0 +1,7 @@
+D:\7sem\иппрпо\lab04\musicservice\src\main\java\by\ipprpo\musicservice\Main.java
+D:\7sem\иппрпо\lab04\musicservice\src\main\java\by\ipprpo\musicservice\model\Playlist.java
+D:\7sem\иппрпо\lab04\musicservice\src\main\java\by\ipprpo\musicservice\model\Track.java
+D:\7sem\иппрпо\lab04\musicservice\src\main\java\by\ipprpo\musicservice\model\User.java
+D:\7sem\иппрпо\lab04\musicservice\src\main\java\by\ipprpo\musicservice\repository\InMemoryPlaylistRepository.java
+D:\7sem\иппрпо\lab04\musicservice\src\main\java\by\ipprpo\musicservice\repository\PlaylistRepository.java
+D:\7sem\иппрпо\lab04\musicservice\src\main\java\by\ipprpo\musicservice\service\PlaylistService.java
