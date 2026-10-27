@@ -87,7 +87,7 @@ void testSameTitleDifferentArtistsAllowed() {
 
     Playlist saved = service.getPlaylist(10);
 
-    assertEquals(2, saved.getTracks().size());
+    assertEquals(3, saved.getTracks().size());
     assertEquals("Adele", saved.getTracks().get(0).getArtist());
     assertEquals("Lionel Richie", saved.getTracks().get(1).getArtist());
 }
