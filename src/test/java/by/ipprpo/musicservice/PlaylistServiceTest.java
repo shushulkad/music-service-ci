@@ -34,9 +34,6 @@ public class PlaylistServiceTest {
         Track track = new Track(1, "Yesterday", "The Beatles", 125);
         service.addTrackToPlaylist(1, track);
 
-        Track track1 = new Track(2, "Rehab", "Rihanna", 125);
-        service.addTrackToPlaylist(1, track1);
-
         Playlist savedPlaylist = service.getPlaylist(1);
         assertNotNull(savedPlaylist, "Плейлист должен существовать");
         assertEquals(1, savedPlaylist.getTracks().size(), "В плейлисте должен быть ровно 1 трек");

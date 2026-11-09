@@ -24,9 +24,12 @@ public class Main {
 
         Track track1 = new Track(1, "Yesterday", "The Beatles", 125);
         Track track2 = new Track(2, "Bohemian Rhapsody", "Queen", 354);
+        Track track3 = new Track(3, "Rehab", "Rihanna", 354);
 
         service.addTrackToPlaylist(1, track1);
         service.addTrackToPlaylist(1, track2);
+        service.addTrackToPlaylist(1, track3);
+
 
         try {
             service.addTrackToPlaylist(1, new Track(3, "yesterday", "The Beatles", 125));
