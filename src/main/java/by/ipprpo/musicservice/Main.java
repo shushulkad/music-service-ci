@@ -6,12 +6,14 @@ import by.ipprpo.musicservice.model.User;
 import by.ipprpo.musicservice.repository.InMemoryPlaylistRepository;
 import by.ipprpo.musicservice.repository.PlaylistRepository;
 import by.ipprpo.musicservice.service.PlaylistService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class Main {
+    private static final Logger LOGGER = LoggerFactory.getLogger(Main.class);
+
     public static void main(String[] args) {
-        System.out.println("==================================================");
-        System.out.println("   Музыкальный сервис (Вариант 11) - Автоматическая сборка");
-        System.out.println("==================================================");
+        LOGGER.info("Музыкальный сервис: демонстрация ЛР №5");
 
         PlaylistRepository repository = new InMemoryPlaylistRepository();
         PlaylistService service = new PlaylistService(repository);
@@ -23,28 +25,22 @@ public class Main {
         Track track1 = new Track(1, "Yesterday", "The Beatles", 125);
         Track track2 = new Track(2, "Bohemian Rhapsody", "Queen", 354);
 
-        System.out.println("1. Добавление треков в плейлист...");
         service.addTrackToPlaylist(1, track1);
         service.addTrackToPlaylist(1, track2);
-        System.out.println("Треки успешно добавлены: " + service.getPlaylist(1).getTracks().size() + " шт.");
 
-        System.out.println("2. Проверка индивидуального задания: запрет дубликата...");
         try {
             service.addTrackToPlaylist(1, new Track(3, "yesterday", "The Beatles", 125));
-            System.out.println("[ВНИМАНИЕ] Дубликат был добавлен ошибочно!");
-        } catch (IllegalArgumentException e) {
-            System.out.println("[УСПЕХ] Запрещено добавление дубликата! Сообщение: " + e.getMessage());
+        } catch (IllegalArgumentException expected) {
+            // Сервис уже записал предупреждение о дубликате.
         }
 
-        System.out.println("3. Состояние плейлиста:");
+        try {
+            service.addTrackToPlaylist(999, track1);
+        } catch (IllegalArgumentException expected) {
+            // Сервис уже записал ошибку о несуществующем плейлисте.
+        }
+
         Playlist currentPlaylist = service.getPlaylist(1);
-        System.out.println(currentPlaylist);
-        for (Track t : currentPlaylist.getTracks()) {
-            System.out.println("  - " + t);
-        }
-
-        System.out.println("==================================================");
-        System.out.println("   Приложение успешно завершило работу");
-        System.out.println("==================================================");
+        LOGGER.info("Итоговый плейлист «{}»: {}", currentPlaylist.getTitle(), currentPlaylist.getTracks());
     }
 }

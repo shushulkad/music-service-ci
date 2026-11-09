@@ -33,10 +33,16 @@ public class Track {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         Track track = (Track) o;
-        if (id == track.id) return true;
+        if (id == track.id) {
+            return true;
+        }
         return title.equalsIgnoreCase(track.title) && artist.equalsIgnoreCase(track.artist);
     }
 
