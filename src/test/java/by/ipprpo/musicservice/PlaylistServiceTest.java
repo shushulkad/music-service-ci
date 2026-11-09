@@ -82,7 +82,7 @@ void testSameTitleDifferentArtistsAllowed() {
         10, new Track(101, "Hello", "Adele", 295)
     );
     service.addTrackToPlaylist(
-        10, new Track(102 , "Hello", "Lionel Richie", 251)
+        10, new Track(102, "Hello", "Lionel Richie", 251)
     );
 
     Playlist saved = service.getPlaylist(10);
