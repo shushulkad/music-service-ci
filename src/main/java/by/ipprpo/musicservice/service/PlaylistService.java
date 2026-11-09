@@ -20,13 +20,13 @@ public class PlaylistService {
     public void addTrackToPlaylist(int playlistId, Track track) {
         Playlist playlist = repository.findById(playlistId);
         if (playlist == null) {
-            LOGGER.error("Не удалось добавить трек {}: плейлист {} не найден", track.getId(), playlistId);
+            LOGGER.error("Could not add track {}: playlist {} not found", track.getId(), playlistId);
             throw new IllegalArgumentException("Ошибка: Плейлист с ID " + playlistId + " не найден!");
         }
 
         for (Track existing : playlist.getTracks()) {
             if (existing.equals(track)) {
-                LOGGER.warn("Трек «{}» уже есть в плейлисте {}", track.getTitle(), playlistId);
+                LOGGER.warn("Track '{}' is already in playlist {}", track.getTitle(), playlistId);
                 throw new IllegalArgumentException(
                     "Композиция '" + track.getTitle() + 
                     "' исполнителя '" + track.getArtist() + "' уже есть в плейлисте!"
@@ -37,9 +37,9 @@ public class PlaylistService {
         playlist.addTrack(track);
         repository.save(playlist);
         int trackCount = playlist.getTracks().size();
-        LOGGER.info("Трек «{}» добавлен в плейлист {}; всего треков: {}", track.getTitle(), playlistId, trackCount);
+        LOGGER.info("Added track '{}' to playlist {}; total tracks: {}", track.getTitle(), playlistId, trackCount);
         if (trackCount < RECOMMENDED_MIN_TRACKS) {
-            LOGGER.warn("В плейлисте {} пока {} трек(ов); рекомендуемый минимум — {}",
+            LOGGER.warn("Playlist {} has {} track(s); recommended minimum: {}",
                     playlistId, trackCount, RECOMMENDED_MIN_TRACKS);
         }
     }

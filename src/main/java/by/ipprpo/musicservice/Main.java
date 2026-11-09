@@ -13,13 +13,13 @@ public class Main {
     private static final Logger LOGGER = LoggerFactory.getLogger(Main.class);
 
     public static void main(String[] args) {
-        LOGGER.info("Музыкальный сервис: демонстрация ЛР №5");
+        LOGGER.info("Music service: Lab 5 demo");
 
         PlaylistRepository repository = new InMemoryPlaylistRepository();
         PlaylistService service = new PlaylistService(repository);
 
         User user = new User(1, "Дарья");
-        Playlist playlist = new Playlist(1, "Любимые хиты", user);
+        Playlist playlist = new Playlist(1, "Favorite Hits", user);
         repository.save(playlist);
 
         Track track1 = new Track(1, "Yesterday", "The Beatles", 125);
@@ -41,6 +41,6 @@ public class Main {
         }
 
         Playlist currentPlaylist = service.getPlaylist(1);
-        LOGGER.info("Итоговый плейлист «{}»: {}", currentPlaylist.getTitle(), currentPlaylist.getTracks());
+        LOGGER.info("Final playlist '{}': {}", currentPlaylist.getTitle(), currentPlaylist.getTracks());
     }
 }
