@@ -32,7 +32,7 @@ public class PlaylistServiceTest {
         repository.save(playlist);
 
         Track track = new Track(1, "Yesterday", "The Beatles", 125);
-        service.addTrackToPlaylist(1, track);
+        service.addTrackToPlaylist(1 , track);
 
         Playlist savedPlaylist = service.getPlaylist(1);
         assertNotNull(savedPlaylist, "Плейлист должен существовать");

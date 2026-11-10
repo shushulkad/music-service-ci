@@ -9,7 +9,7 @@
     <packaging>jar</packaging>
 
     <name>music-service</name>
-    <description>Лабораторная работа №5. Статический анализ и журналирование. Вариант 11: Музыкальный сервис</description>
+    <description>Лабораторная работа №5</description>
 
     <properties>
         <maven.compiler.release>17</maven.compiler.release>
